@@ -1,0 +1,8 @@
+model_type: 'HAT'     # can be 'UNET', 'ESRGAN', 'HAT', 'LDM_VAE', 'LDM_UNET'
+loss_type: 'l1'   # can be 'l1', 'mse', or 'l1_ssim'
+lr: 1e-4
+perceptual_weight: 0.02
+l1_weight: 0.9
+ssim_weight: 0.1
+in_channels: 3
+out_channels: 3

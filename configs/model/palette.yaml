@@ -1,0 +1,16 @@
+model_type: PALETTE
+lr: 1e-4
+in_channels: 3
+out_channels: 3
+loss_type: mse
+# l1_weight: 0.8
+# ssim_weight: 0.2
+palette_base_channels: 64
+palette_channel_multipliers:
+  - 1
+  - 2
+  - 4
+  - 8
+palette_n_res_blocks: 2
+palette_num_train_timesteps: 1000
+palette_num_inference_steps: 50

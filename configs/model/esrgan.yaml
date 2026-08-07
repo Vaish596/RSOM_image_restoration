@@ -1,0 +1,12 @@
+model_type: 'ESRGAN'
+loss_type: 'l1'
+lr: 1e-5
+# use_amp: False
+# pretrained: True
+perceptual_weight: 0.02
+adv_weight: 0.0001
+l1_weight: 0.9
+ssim_weight: 0.1
+
+
+

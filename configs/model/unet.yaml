@@ -1,0 +1,8 @@
+model_type: UNET
+lr: 1e-4
+in_channels: 3
+out_channels: 3
+loss_type: l1
+l1_weight: 0.8
+ssim_weight: 0.2
+
