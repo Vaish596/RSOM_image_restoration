@@ -1,0 +1,18 @@
+batch_size: 2
+folder_path: /home/v207e/GitLab/v207e/v207e/SupreRes/Data/RSOM/processed_slices_50
+patch_size: 128
+num_workers: 4
+pin_memory: true
+repeat_factor: 10
+informative_threshold: 0.1
+max_patch_tries: 10
+load_metadata: false
+pad_if_needed: true
+val_batch_size: 1
+pre_split: True
+# Slice dataset mode (set to true for processing slices instead of MIP)
+use_slices: true
+slice_batch_size: 16
+n_slices: 168
+use_log_scale: true
+log_scale_factor: 100.0
