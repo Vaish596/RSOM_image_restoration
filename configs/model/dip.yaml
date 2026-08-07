@@ -1,0 +1,16 @@
+model_type: DIP
+lr: 0.01
+out_channels: 3
+loss_type: l1
+# ---- DIP network architecture (from the paper) --------------------------- #
+input_depth: 32                     # noise input channels
+n_scales: 5                         # encoder-decoder scales
+need_sigmoid: true                  # clamp output to [0, 1]
+# ---- DIP optimisation ---------------------------------------------------- #
+dip_num_iterations: 2400            # paper: 2400-3000 for denoising
+dip_tv_weight: 0.0                  # TV regularisation (0 = off)
+dip_input_noise: true               # true = classic DIP (noise), false = LQ input
+dip_reg_noise_std: 0.033            # noise perturbation std (1/30 per paper)
+dip_ema_weight: 0.99                # exponential moving average weight
+dip_backtrack_thresh: 1.05          # backtrack if loss increases > 5%
+dip_num_runs: 2                     # multi-run averaging (2+ = paper's 31.00 PSNR trick)
