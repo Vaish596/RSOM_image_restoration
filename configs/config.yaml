@@ -1,0 +1,12 @@
+defaults:
+  - model: unet          # swap to gan/transformer/diffusion via CLI
+  - data: rsom
+  - trainer: default
+  - checkpoint: default
+  - _self_
+
+wandb:
+  project: "image-sr"
+  group: "unet-ablations"   # override per experiment
+  tags: ["processed_50"]                  # e.g. ["x4", "div2k"]
+  notes: ""

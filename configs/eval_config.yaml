@@ -1,0 +1,72 @@
+# ============================================================
+#  Evaluation config — list trained checkpoints / models to evaluate
+# ============================================================
+
+data:
+  folder_path: /home/v207e/GitLab/v207e/v207e/SupreRes/Data/RSOM/processed_slices_25
+  batch_size: 1
+  num_workers: 0
+  pre_split: True
+  # Slice dataset mode (set to true when evaluating slice-trained models)
+  use_slices: true
+  n_slices: 168
+  use_log_scale: true
+  log_scale_factor: 100.0
+
+splits:
+  - val
+  - test
+
+wandb:
+  project: "image-sr"
+  tags: ["inference","processed_slices_25","processed_25"]
+
+output:
+  csv_dir: "eval_results/sliced_25"
+
+skip_lq: true
+
+models:
+  # DIP (zero-shot — no checkpoint needed)
+  - name: "DIP_slice_25"
+    type: "dip"
+    lr: 0.01
+    out_channels: 3
+    loss_type: l1
+    input_depth: 32
+    n_scales: 5
+    need_sigmoid: true 
+    num_iterations: 2400
+    tv_weight: 0.0
+    input_noise: true
+    reg_noise_std: 0.033
+    ema_weight: 0.99
+    backtrack_thresh: 1.05
+    num_runs: 2
+
+#   # - name: "UNet_50"
+#   #   checkpoint: checkpoints/UNET/UNET_lr0.0001_bs2_loss-l1_ep100_fep7shsd/best.ckpt
+#   # - name: "ESRGAN_50"
+#   #   checkpoint: checkpoints/ESRGAN/ESRGAN_lr1e-05_bs2_loss-l1_ep100_ojgr6bk2/best.ckpt
+#   # - name: "HAT_50"
+#   #   checkpoint: checkpoints/HAT/HAT_lr0.0001_bs2_loss-l1_ep100_kr7i3zyi/best.ckpt
+#   # - name: "PALETTE_50"
+#   #   checkpoint: checkpoints/PALETTE/PALETTE_lr0.0001_bs2_loss-mse_ep100_lgbu9jdy/best.ckpt
+
+#   - name: "UNet_35"
+#     checkpoint: checkpoints/UNET/UNET_lr0.0001_bs2_loss-l1_ep100_mi9ios66/best.ckpt
+#   - name: "ESRGAN_35"
+#     checkpoint: checkpoints/ESRGAN/ESRGAN_lr1e-05_bs2_loss-l1_ep100_ne2bpbpy/best.ckpt
+#   - name: "HAT_35"
+#     checkpoint: checkpoints/HAT/HAT_lr0.0001_bs2_loss-l1_ep100_n16t6poi/best.ckpt
+#   - name: "PALETTE_35"
+#     checkpoint: checkpoints/PALETTE/PALETTE_lr0.0001_bs2_loss-mse_ep100_b8rzxgg0/best.ckpt
+
+  # - name: "UNet_25"
+  #   checkpoint: checkpoints/UNET/UNET_lr0.0001_bs2_loss-l1_ep100_g43n3puq/best.ckpt
+  # - name: "ESRGAN_25"
+  #   checkpoint: checkpoints/ESRGAN/ESRGAN_lr1e-05_bs2_loss-l1_ep100_ki2761nr/best.ckpt
+  # - name: "HAT_25"
+  #   checkpoint: checkpoints/HAT/HAT_lr0.0001_bs2_loss-l1_ep100_tt55sutc/best.ckpt
+  # - name: "PALETTE_25"
+  #   checkpoint: checkpoints/PALETTE/PALETTE_lr0.0001_bs2_loss-mse_ep100_bg515n0y/best.ckpt
